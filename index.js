@@ -40,6 +40,8 @@ const fs = require('fs').promises;
         for (x of getUrls(uniqueButtonArray, url)) {
 
             await page.goto(x, { timeout: 60000, waitUntil: 'domcontentloaded' });
+            await page.waitForTimeout(1000);
+
             console.log("We are on " + page.url());
 
             const sections = await page.$$('[id^="SaleSection_"]');
